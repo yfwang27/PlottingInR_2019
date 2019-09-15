@@ -7,7 +7,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-These exercises cover the sections of Plotting in R [PlottingInR](https://lmsbioinformatics.github.io/LMS_Reproducible-R/r_course/introToR_Session1.html).
+These exercises cover the sections of Plotting in R [PlottingInR](https://lmsbioinformatics.github.io/LMS_PlottingInR/course/PlotInR.html).
 
 
 

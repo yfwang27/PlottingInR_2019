@@ -1,0 +1,65 @@
+---
+title: "Plotting Exercise 2"
+author: "MRC LMS"
+date: "19/09/2019"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+These exercises cover the sections of Plotting in R [PlottingInR](https://lmsbioinformatics.github.io/LMS_PlottingInR/course/PlotInR.html).
+
+
+
+## Exercise 1
+
+Please load the dateset **subset_GoT** from "Got_dataset/subset_GoT.csv" and use ggplot2 to 
+
+(1) create a bar plot using subset_GoT\$social_status and see the number of characters are Highborn or Lowborn 
+
+(2) a. asign colours according to whether they switched the allegiance (subset_GoT\$allegiance_switched)
+
+    b. add argument **position=position_dodge()** in geom_bar() and see what happens
+
+(3) use facet_wrap() to separate the figure according to their sex
+
+(4) use facet_grid() to separate the figure according to their sex and occupation
+
+(5) use facet_wrap() to separate the figure according to their sex and occupation and see the difference from the previous figure
+
+(6) save the final figure as "pdf" file
+
+[hint: use read.csv() function to load dataset]
+
+```{r,echo=T,eval=F}
+subset_GoT<-read.csv(file="Got_dataset/subset_GoT.csv")
+
+head(subset_GoT)
+```
+
+```{r,echo=F,eval=F}
+
+ggplot(subset_GoT,aes(x=social_status)) + 
+  geom_bar()
+
+ggplot(subset_GoT,aes(x=social_status,fill=allegiance_switched)) + 
+  geom_bar()
+
+ggplot(subset_GoT,aes(x=social_status,fill=allegiance_switched)) + 
+  geom_bar(position=position_dodge())
+
+ggplot(subset_GoT,aes(x=social_status,fill=allegiance_switched)) + 
+  geom_bar()+facet_wrap(~sex)
+
+ggplot(subset_GoT,aes(x=social_status,fill=allegiance_switched)) + 
+  geom_bar()+facet_grid(sex~occupation)
+
+ggplot(subset_GoT,aes(x=social_status,fill=allegiance_switched)) + 
+  geom_bar()+facet_wrap(sex~occupation)
+
+
+ggsave(file="final_figure.pdf")
+```
+
+
+

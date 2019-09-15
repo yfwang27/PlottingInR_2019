@@ -1,0 +1,84 @@
+---
+title: "Plotting Answer 2"
+author: "MRC LMS"
+date: "19/09/2019"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+These exercises cover the sections of Plotting in R [PlottingInR](https://lmsbioinformatics.github.io/LMS_PlottingInR/course/PlotInR.html).
+
+
+
+## Exercise 1
+
+Please load the dateset **subset_GoT** from "Got_dataset/subset_GoT.csv" and use ggplot2 to 
+
+(1) create a bar plot using subset_GoT\$social_status and see the number of characters are Highborn or Lowborn 
+
+
+```{r,echo=T,eval=T,fig.height=4, fig.width=5}
+subset_GoT<-read.csv(file="Got_dataset/subset_GoT.csv")
+
+head(subset_GoT)
+
+library(ggplot2)
+ggplot(subset_GoT,aes(x=social_status)) + 
+  geom_bar()
+
+```
+
+
+(2) a. asign colours according to whether they switched the allegiance (subset_GoT\$allegiance_switched)
+
+
+```{r,fig.height=4, fig.width=5}
+
+ggplot(subset_GoT,aes(x=social_status,fill=allegiance_switched)) + 
+  geom_bar()
+
+```
+
+(2) b. add argument **position=position_dodge()** in geom_bar() and see what happens
+
+```{r,fig.height=4, fig.width=5}
+ggplot(subset_GoT,aes(x=social_status,fill=allegiance_switched)) + 
+  geom_bar(position=position_dodge())
+
+```
+
+(3) use facet_wrap() to separate the figure according to their sex
+
+```{r,fig.height=4, fig.width=5}
+ggplot(subset_GoT,aes(x=social_status,fill=allegiance_switched)) + 
+  geom_bar()+facet_wrap(~sex)
+
+```
+
+(4) use facet_grid() to separate the figure according to their sex and occupation
+
+```{r,fig.height=6, fig.width=8}
+
+ggplot(subset_GoT,aes(x=social_status,fill=allegiance_switched)) + 
+  geom_bar()+facet_grid(sex~occupation)
+```
+
+
+
+(5) use facet_wrap() to separate the figure according to their sex and occupation and see the difference from the previous figure
+
+```{r,fig.height=6, fig.width=8}
+ggplot(subset_GoT,aes(x=social_status,fill=allegiance_switched)) + 
+  geom_bar()+facet_wrap(sex~occupation)
+```
+
+
+(6) save the final figure as "pdf" file
+
+```{r,fig.height=4, fig.width=8}
+ggsave(file="final_figure.pdf")
+```
+
+
+

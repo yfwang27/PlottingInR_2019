@@ -324,26 +324,6 @@ ggplot2 is a powerful R package based on the grammar of graphics (Wilkinson, 200
 "In brief, the grammar tells us that a statistical graphic is a mapping from data to aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars)." - Wickham, 2016
 
 
-ggplot2
-========================================================
-
- + scatter plot
- 
- + box plot
- 
- + bar chart
- 
- + histogram
- 
- + density plot
- 
- + faceting
- 
- + aestheics
-
- + saving plots
-
-
 
 ggplot2 R package
 ========================================================
@@ -820,15 +800,16 @@ ggplot(base_graph_4gg,aes(x=sample_num,y=value,col=variable,group=variable)) +
 ![plot of chunk unnamed-chunk-54](PlotInR-figure/unnamed-chunk-54-1.png)
 
 
+Exercise 
 ========================================================
-Time for an exercise!
-========================================================
-Exercise on Plotting can be found [here](http://mrccsc.github.io/Reproducible-R/r_course/exercises/Plotting_exercise.html)
+Time for exercise - 
 
-Solutions.
-========================================================
-Answers can be found here [here](answers/Plotting_answers.html)
+* [Plotting in R exercise 2](Plotting_exercise2.html)
 
+Solutions
+=========================================================
+
+* [Plotting in R solution 2](Plotting_answer2.html)
 
 
 Combining Plots
@@ -869,8 +850,6 @@ head(data1)
 
 ========================================================
 
-Plot histograms for different columns in the data frame separately. This is not very efficient. 
-You could also do it more efficiently using for loop.
 
 
 ```r
