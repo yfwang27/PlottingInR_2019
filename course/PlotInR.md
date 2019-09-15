@@ -402,7 +402,8 @@ use ggplot2's ggplot() function to setup **data** and **aesthetic mappings**
 
 
 ```r
-g<-ggplot(data=episode_data, aes(x=gross_running_time,y=net_running_time))
+g<-ggplot(data=episode_data, 
+          aes(x=gross_running_time,y=net_running_time))
 
 print(g)
 ```
@@ -415,7 +416,8 @@ add geom_point layer - Scatter plot
 
 
 ```r
-g<-ggplot(data=episode_data, aes(x=gross_running_time,y=net_running_time))
+g<-ggplot(data=episode_data, 
+          aes(x=gross_running_time,y=net_running_time))
 g + geom_point()
 ```
 
@@ -465,7 +467,8 @@ add geom_density layer - Density plot (2/3)
 
 
 ```r
-ghis<- ggplot(data=episode_data, aes(x=net_running_time,fill=as.factor(season)))
+ghis<- ggplot(data=episode_data, 
+              aes(x=net_running_time,fill=as.factor(season)))
 ghis + geom_density() 
 ```
 
@@ -476,13 +479,14 @@ add geom_density layer - Density plot (3/3)
 
 
 ```r
-ghis<- ggplot(data=episode_data, aes(x=net_running_time,fill=as.factor(season)))
+ghis<- ggplot(data=episode_data, 
+              aes(x=net_running_time,fill=as.factor(season)))
 ghis + geom_density(alpha=0.25) 
 ```
 
 ![plot of chunk unnamed-chunk-35](PlotInR-figure/unnamed-chunk-35-1.png)
 
-Bar plot (1/2) - geom_bar()
+Bar plot (1/4) - geom_bar()
 ========================================================
 add geom_bar layer
 
@@ -495,7 +499,34 @@ gbar + geom_bar()
 
 ![plot of chunk unnamed-chunk-36](PlotInR-figure/unnamed-chunk-36-1.png)
 
-Bar plot (2/2) - coord_flip ()
+Bar plot (2/4) - change labels for x,y axes and add title
+========================================================
+use xlab(), ylab(), and ggtitl()
+
+
+```r
+gbar<- ggplot(data=episode_data, aes(x=season))
+gbar + geom_bar() + 
+  xlab("Season")+ ylab("Number of episodes")+ ggtitle("Bar plot")
+```
+
+![plot of chunk unnamed-chunk-37](PlotInR-figure/unnamed-chunk-37-1.png)
+
+Bar plot (3/4) - change labels for x,y axes and add title
+========================================================
+or just use labs()
+
+
+```r
+gbar<- ggplot(data=episode_data, aes(x=season))
+gbar + geom_bar() + 
+  labs(x="Season",y="Number of episodes",title="Bar plot")
+```
+
+![plot of chunk unnamed-chunk-38](PlotInR-figure/unnamed-chunk-38-1.png)
+
+
+Bar plot (4/4) - coord_flip ()
 ========================================================
 
 use different colours for different seasons and also change the labels
@@ -505,13 +536,19 @@ use different colours for different seasons and also change the labels
 gbar + geom_bar() + coord_flip()
 ```
 
-![plot of chunk unnamed-chunk-37](PlotInR-figure/unnamed-chunk-37-1.png)
+![plot of chunk unnamed-chunk-39](PlotInR-figure/unnamed-chunk-39-1.png)
 
 
 Exercise 
 ========================================================
-Time for exercise - 5 mins to review what we have gotten so far....
+Time for exercise - 
 
+* [Plotting in R exercise 1](Plotting_exercise1.html)
+
+Solutions
+=========================================================
+
+* [Plotting in R solution 1](Plotting_answer1.html)
 
 
 Box plot (1/7) - use geom_boxplot()
@@ -553,7 +590,7 @@ ggplot(data=subset_GoT,aes(x=social_status,y=exp_time_hrs))+
   geom_boxplot()
 ```
 
-![plot of chunk unnamed-chunk-40](PlotInR-figure/unnamed-chunk-40-1.png)
+![plot of chunk unnamed-chunk-41](PlotInR-figure/unnamed-chunk-41-1.png)
 
 Box plot (3/7) - geom_point()
 ========================================================
@@ -566,7 +603,7 @@ ggplot(data=subset_GoT,aes(x=social_status,y=exp_time_hrs))+
   geom_boxplot() + geom_point()
 ```
 
-![plot of chunk unnamed-chunk-41](PlotInR-figure/unnamed-chunk-41-1.png)
+![plot of chunk unnamed-chunk-42](PlotInR-figure/unnamed-chunk-42-1.png)
 
 Box plot (4/7) - position_jitter()
 ========================================================
@@ -577,7 +614,7 @@ ggplot(data=subset_GoT,aes(x=social_status,y=exp_time_hrs))+
   geom_boxplot() + geom_point(position = position_jitter())
 ```
 
-![plot of chunk unnamed-chunk-42](PlotInR-figure/unnamed-chunk-42-1.png)
+![plot of chunk unnamed-chunk-43](PlotInR-figure/unnamed-chunk-43-1.png)
 
 
 Box plot (5/7) - add colour
@@ -590,7 +627,7 @@ ggplot(data=subset_GoT,aes(x=social_status,y=exp_time_hrs,fill=occupation))+
   geom_boxplot()
 ```
 
-![plot of chunk unnamed-chunk-43](PlotInR-figure/unnamed-chunk-43-1.png)
+![plot of chunk unnamed-chunk-44](PlotInR-figure/unnamed-chunk-44-1.png)
 
 Box plot (6/7) - facet_wrap()
 ========================================================
@@ -604,7 +641,7 @@ ggplot(data=subset_GoT,aes(x=social_status,y=exp_time_hrs,fill=occupation))+
   geom_boxplot()+facet_wrap(~sex)
 ```
 
-![plot of chunk unnamed-chunk-44](PlotInR-figure/unnamed-chunk-44-1.png)
+![plot of chunk unnamed-chunk-45](PlotInR-figure/unnamed-chunk-45-1.png)
 
 Box plot (7/7) - facet_grid()
 ========================================================
@@ -618,7 +655,7 @@ ggplot(data=subset_GoT,aes(x=social_status,y=exp_time_hrs,fill=occupation))+
   geom_boxplot()+facet_grid(dth_flag~sex)
 ```
 
-![plot of chunk unnamed-chunk-45](PlotInR-figure/unnamed-chunk-45-1.png)
+![plot of chunk unnamed-chunk-46](PlotInR-figure/unnamed-chunk-46-1.png)
 
 
 
@@ -692,7 +729,7 @@ base_graph_df
 6          6     80.00     100
 ```
 
-![plot of chunk unnamed-chunk-49](PlotInR-figure/unnamed-chunk-49-1.png)
+![plot of chunk unnamed-chunk-50](PlotInR-figure/unnamed-chunk-50-1.png)
 
 Base Graphics VS ggplot2 (2/5)
 ========================================================
@@ -759,7 +796,7 @@ ggplot(base_graph_4gg,aes(x=sample_num,y=value,col=variable,group=variable)) +
   labs(title="Expression Data",x ="Sample", y = "Values")
 ```
 
-![plot of chunk unnamed-chunk-52](PlotInR-figure/unnamed-chunk-52-1.png)
+![plot of chunk unnamed-chunk-53](PlotInR-figure/unnamed-chunk-53-1.png)
 
 Base Graphics VS ggplot2 (5/5)
 ========================================================
@@ -780,14 +817,15 @@ ggplot(base_graph_4gg,aes(x=sample_num,y=value,col=variable,group=variable)) +
         axis.title = element_text(colour = "purple"))
 ```
 
-![plot of chunk unnamed-chunk-53](PlotInR-figure/unnamed-chunk-53-1.png)
+![plot of chunk unnamed-chunk-54](PlotInR-figure/unnamed-chunk-54-1.png)
 
 
 ========================================================
 Time for an exercise!
 ========================================================
 Exercise on Plotting can be found [here](http://mrccsc.github.io/Reproducible-R/r_course/exercises/Plotting_exercise.html)
-Answers to exercise.
+
+Solutions.
 ========================================================
 Answers can be found here [here](answers/Plotting_answers.html)
 
@@ -797,8 +835,8 @@ Combining Plots
 ======================================================== 
 
 
-R makes it easy to combine multiple plots into one overall graph, using either the par( ) or layout( ) function. 
-With the par( ) function, you can include the option mfrow=c(nrows, ncols) to create a matrix of nrows x ncols plots that are filled in by row.
+R makes it easy to combine multiple plots into one overall graph, using either the par( ) or layout() function. 
+With the par() function, you can include the option mfrow=c(nrows, ncols) to create a matrix of nrows x ncols plots that are filled in by row.
 mfcol=c(nrows, ncols) fills in the matrix by columns.
 
 Define a layout with 2 rows and 2 columns
@@ -845,7 +883,7 @@ boxplot(data1$Treated1)
 ========================================================
 
  
-![plot of chunk unnamed-chunk-57](PlotInR-figure/unnamed-chunk-57-1.png)
+![plot of chunk unnamed-chunk-58](PlotInR-figure/unnamed-chunk-58-1.png)
 
 ========================================================
 

@@ -1,5 +1,5 @@
 ---
-title: "Plotting Excercise 1"
+title: "Plotting Answer 1"
 author: "MRC LMS"
 date: "19/09/2019"
 output: html_document
@@ -11,53 +11,73 @@ These exercises cover the sections of Plotting in R [PlottingInR](https://lmsbio
 
 
 
-**Exercise 1**
+## Exercise 1
 
-Please load the dateset **mtcars** by calling data(mtcars) and use the base R graphics function to 
+Please load the dateset **mtcars** by calling data(mtcars) and use the base R graphics to 
 
-(1) create a scatter plot of mtcars$mpg VS mtcars$wt (x-axis = mpg and y-axis = wt). 
+(1) create a scatter plot of mtcars\$mpg VS mtcars\$wt (x-axis = mpg and y-axis = wt). 
 
-(2) change the labels for x axis and y axis
+(2) change the labels for x axis = "Miles/(US) gallon" and y axis = "Weight (1000 lbs)"
 
-(3) change the colour of points to red and the the shape of points to "filled circle"
+(3) add title = "scatter plot"
+
+(4) change the colour of points to red and the the shape of points to "filled circle"
 
 [hint: use data() function to load mtcars]
 
-```{r,echo=T,eval=F}
+```{r,echo=T,eval=T}
 data(mtcars)
 head(mtcars)
-plot(mtcars$mpg, mtcars$wt, main="scatter plot", xlab="MPG", ylab="WT",pch=16,col="red")
-
+plot(mtcars$mpg, mtcars$wt, main="scatter plot", xlab="Miles/(US) gallon", ylab="Weight (1000 lbs)",pch=16,col="red")
 ```
 
 
+## Exercise 2
 
-**Exercise 2**
-Produce a plot like the one shown below. 
-(Hint: you can use the matplot function to make the plots.) 
+Please load the dateset **mtcars** by calling data(mtcars) and use the ggplot2 to 
 
-```{r,echo=FALSE}
-x<-seq(-10,10,0.1) 
-y<-sin(x) 
-z<-cos(x) 
-matplot(x,cbind(y,z),col=c("red","blue"),las=1,xlab="x",ylab="Sine(x) or Cosine(x)",lty=1:2,type="l")
+(1) create a scatter plot of mtcars\$mpg VS mtcars\$wt (x-axis = mpg and y-axis = wt).
+
+(2) change the labels for x axis = "Miles/(US) gallon" and y axis = "Weight (1000 lbs)"
+
+(3) add title = "scatter plot"
+
+(4) change the colour of points to red [hint: use col="red" when constructing aesthetic mappings]
+
+```{r,echo=T,eval=F}
+library(ggplot2)
+g<- ggplot(mtcars, aes(x=mpg,y=wt,col="red"))+ geom_point()
+
+# option 1
+g + labs(x="Miles/(US) gallon",y="Weight (1000 lbs)",title="scatter plot")
+
+# option 2
+g + xlab("Miles/(US) gallon")+ylab("Weight (1000 lbs)") +
+  ggtitle=("scatter plot"))
 ```
 
 
-**Exercise 3**
-Check out the data in the data frame Loblolly (in the datasets package), on the growth of loblolly pine trees from different stocks. 
-Create the following plot, or something similar 
-(note that you will need to convert height from ft to m).
+```{r,echo=F,eval=T}
+#g<- ggplot(mtcars, aes(x=mpg,y=wt,col="red"))+ geom_point()
+library(ggplot2)
+# option 1
+ggplot(mtcars, aes(x=mpg,y=wt,col="red"))+ geom_point() + labs(x="Miles/(US) gallon",y="Weight (1000 lbs)",title="scatter plot")
 
-```{r,echo=FALSE}
-ll.dat<-Loblolly 
-ll.dat$height<-ll.dat$height*0.3048 
- 
-plot(height~age,type="n",xlab="Age (yr)",ylab="Height (m)",las=1,xlim=c(0,25),data=ll.dat) 
-points(ll.dat$age[ll.dat$Seed==307],ll.dat$height[ll.dat$Seed==329],pch=1,col="red",type="o") 
-points(ll.dat$age[ll.dat$Seed==311],ll.dat$height[ll.dat$Seed==307],pch=6,col="blue",type="o") 
-points(ll.dat$age[ll.dat$Seed==311],ll.dat$height[ll.dat$Seed==311],pch=22,col="black",type="o") 
-legend("topleft",legend=c(311,307,329),pch=c(1,6,22),col=c("red","blue","black"))
 ```
 
+(5) a. what will happen if change the colour of points to mtcars\$am [hint: use col=am when constructing aesthetic mappings]
+
+```{r,echo=T,eval=T}
+library(ggplot2)
+ggplot(mtcars, aes(x=mpg,y=wt,col=am))+ geom_point()
+```
+
+
+(5)  b. what will happen if change the colour of points use col=as.factor(am) when constructing aesthetic mappings
+   
+
+```{r,echo=T,eval=T}
+library(ggplot2)
+ggplot(mtcars, aes(x=mpg,y=wt,col=as.factor(am)))+ geom_point()
+```
 

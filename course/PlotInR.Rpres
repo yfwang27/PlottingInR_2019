@@ -377,7 +377,8 @@ head(episode_data)
 use ggplot2's ggplot() function to setup **data** and **aesthetic mappings**
 
 ```{r,eval=T, fig.width=8, fig.height=8}
-g<-ggplot(data=episode_data, aes(x=gross_running_time,y=net_running_time))
+g<-ggplot(data=episode_data, 
+          aes(x=gross_running_time,y=net_running_time))
 
 print(g)
 ```
@@ -387,7 +388,8 @@ add geom_point layer - Scatter plot
 ========================================================
 
 ```{r,eval=T, fig.width=8, fig.height=8}
-g<-ggplot(data=episode_data, aes(x=gross_running_time,y=net_running_time))
+g<-ggplot(data=episode_data, 
+          aes(x=gross_running_time,y=net_running_time))
 g + geom_point()
 
 ```
@@ -429,7 +431,8 @@ add geom_density layer - Density plot (2/3)
 ========================================================
 
 ```{r,eval=T, fig.width=10, fig.height=8}
-ghis<- ggplot(data=episode_data, aes(x=net_running_time,fill=as.factor(season)))
+ghis<- ggplot(data=episode_data, 
+              aes(x=net_running_time,fill=as.factor(season)))
 ghis + geom_density() 
 
 ```
@@ -438,12 +441,13 @@ add geom_density layer - Density plot (3/3)
 ========================================================
 
 ```{r,eval=T, fig.width=10, fig.height=8}
-ghis<- ggplot(data=episode_data, aes(x=net_running_time,fill=as.factor(season)))
+ghis<- ggplot(data=episode_data, 
+              aes(x=net_running_time,fill=as.factor(season)))
 ghis + geom_density(alpha=0.25) 
 
 ```
 
-Bar plot (1/2) - geom_bar()
+Bar plot (1/4) - geom_bar()
 ========================================================
 add geom_bar layer
 
@@ -453,7 +457,29 @@ gbar<- ggplot(data=episode_data, aes(x=season))
 gbar + geom_bar() 
 ```
 
-Bar plot (2/2) - coord_flip ()
+Bar plot (2/4) - change labels for x,y axes and add title
+========================================================
+use xlab(), ylab(), and ggtitl()
+
+```{r,eval=T, fig.width=8, fig.height=5}
+gbar<- ggplot(data=episode_data, aes(x=season))
+gbar + geom_bar() + 
+  xlab("Season")+ ylab("Number of episodes")+ ggtitle("Bar plot")
+```
+
+Bar plot (3/4) - change labels for x,y axes and add title
+========================================================
+or just use labs()
+
+```{r,eval=T, fig.width=8, fig.height=5}
+gbar<- ggplot(data=episode_data, aes(x=season))
+gbar + geom_bar() + 
+  labs(x="Season",y="Number of episodes",title="Bar plot")
+ 
+```
+
+
+Bar plot (4/4) - coord_flip ()
 ========================================================
 
 use different colours for different seasons and also change the labels
@@ -466,11 +492,15 @@ gbar + geom_bar() + coord_flip()
 
 Exercise 
 ========================================================
-Time for exercise - 5 mins to review what we have gotten so far....
+Time for exercise - 
 
-```{r,eval=T, fig.width=8, fig.height=5}
+* [Plotting in R exercise 1](Plotting_exercise1.html)
 
-```
+Solutions
+=========================================================
+
+* [Plotting in R solution 1](Plotting_answer1.html)
+
 
 Box plot (1/7) - use geom_boxplot()
 ========================================================
@@ -697,7 +727,8 @@ ggplot(base_graph_4gg,aes(x=sample_num,y=value,col=variable,group=variable)) +
 Time for an exercise!
 ========================================================
 Exercise on Plotting can be found [here](http://mrccsc.github.io/Reproducible-R/r_course/exercises/Plotting_exercise.html)
-Answers to exercise.
+
+Solutions.
 ========================================================
 Answers can be found here [here](answers/Plotting_answers.html)
 
@@ -707,8 +738,8 @@ Combining Plots
 ======================================================== 
 
 
-R makes it easy to combine multiple plots into one overall graph, using either the par( ) or layout( ) function. 
-With the par( ) function, you can include the option mfrow=c(nrows, ncols) to create a matrix of nrows x ncols plots that are filled in by row.
+R makes it easy to combine multiple plots into one overall graph, using either the par( ) or layout() function. 
+With the par() function, you can include the option mfrow=c(nrows, ncols) to create a matrix of nrows x ncols plots that are filled in by row.
 mfcol=c(nrows, ncols) fills in the matrix by columns.
 
 Define a layout with 2 rows and 2 columns
